@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import pandas as pd
 
@@ -8,23 +8,19 @@ app = Flask(__name__)
 model = joblib.load("model/LightGBM_model.pkl")
 prep = joblib.load("model/preprocessor.pkl")
 
-# GET endpoint
+
 @app.route("/", methods=["GET"])
 def home():
-    return jsonify({
-        "message": "Salary Prediction API Running",
-        "status": "success"
-    })
+    return render_template("index.html")
 
-# POST endpoint
+
+# ---------------- PREDICTION API ----------------
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
         data = pd.DataFrame([request.json])
 
         data_encoded = prep.transform(data)
-
-        print("Encoded shape:", data_encoded.shape)
 
         prediction = model.predict(data_encoded)
 
@@ -37,5 +33,6 @@ def predict():
             "error": str(e)
         }), 400
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Employee Salary Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Employee Salary Prediction</h1>
+
+    <form id="salaryForm">
+
+        <input type="text" id="company" placeholder="Company">
+
+        <input type="text" id="department" placeholder="Department">
+
+        <input type="number" id="age" placeholder="Age">
+
+        <input type="number" id="age_when_joined" placeholder="Age When Joined">
+
+        <input type="number" id="years_in_the_company" placeholder="Years in Company">
+
+        <input type="number" id="annual_bonus" placeholder="Annual Bonus">
+
+        <input type="number" id="prior_years_experience" placeholder="Previous Experience">
+
+        <input type="number" id="full_time" placeholder="Full Time (1 or 0)">
+
+        <input type="number" id="part_time" placeholder="Part Time (1 or 0)">
+
+        <input type="number" id="contractor" placeholder="Contractor (1 or 0)">
+
+        <input type="number" id="age_diff" placeholder="Age Difference">
+
+        <input type="number" id="bonus_per_year" placeholder="Bonus Per Year">
+
+        <input type="number" id="total_experience" placeholder="Total Experience">
+
+        <input type="number" id="experience_ratio" placeholder="Experience Ratio">
+
+        <input type="text" id="company_department" placeholder="Company_Department">
+
+        <input type="text" id="employment_type" placeholder="Employment Type">
+
+        <button type="submit">
+
+            Predict Salary
+
+        </button>
+
+    </form>
+
+    <h2 id="result"></h2>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
